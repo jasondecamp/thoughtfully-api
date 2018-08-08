@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <title>Moved - Move Smarter.</title>
+  <link href="https://moved.com/fonts/email.css" rel="stylesheet">
+  <style>
+
+  	/* Some resets and issue fixes */
+    #outlook a { padding:0; }
+  	body{ width:100% !important; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; font-weight: 300; font-family: 'circular', Arial, sans-serif; }
+    .ReadMsgBody { width: 100%; }
+    .ExternalClass {width:100%;}
+    .backgroundTable {margin:0 auto; padding:0; width:100% !important;}
+    table td {border-collapse: collapse;}
+    .ExternalClass * {line-height: 115%;}
+    img {display:block;}
+    /* End reset */
+
+  	/* These are our tablet/medium screen media queries */
+    @media screen and (max-width: 650px){
+
+  		/* Hide stuff */
+      *[class="hide"] {display:none !important;}
+
+  		/* This sets elements to 100% width */
+  		*[class="100p"] {width:100% !important; min-width:100% !important; max-width: 100% !important;}
+
+  		/* Centers content on mobile */
+  		*[class="center"] {text-align:center !important; width:100% !important; height:auto !important;}
+
+      /* This sets table cells to 100% width for responsive columns */
+      *[class="mobile1column"] {width:100%!important;display:block!important;padding-left:0!important;padding-right:0!important;}
+
+    }
+  </style>
+</head>
+<body itemscope itemtype="http://schema.org/EmailMessage" style="padding:0; margin:0; font-weight:300;" bgcolor="#F2F2F2">
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td, h1, a {font-family:'circular', Arial, sans-serif !important;}
+  </style>
+  <![endif]-->
+  <table border="0" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0" width="100%" bgcolor="#F2F2F2">
+    <tr>
+      <td align="center" valign="top">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#F2F2F2">
+          <tr><td height="50"></td></tr>
+        </table>
+        {% block header %}
+          <table width="650" cellspacing="0" cellpadding="30" class="100p" bgcolor="#FFFFFF" style="border-bottom: 1px solid #F2F2F2; min-width:650px;">
+            <tr>
+              <td width="auto" align="center" valign="top" style="padding:30px;">
+                <a href="{{domain}}"><img style="display:inline; vertical-align:bottom;" alt="Moved" height="26" width="122"
+                  src="{{domain}}images/emails/moved-logo-2x.png" border="0" /></a>
+              </td>
+            </tr>
+          </table>
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+
+        {% block footer %}
+          <table width="650" cellspacing="0" cellpadding="0" class="100p" bgcolor="#F2F2F2">
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr>
+              <td width="auto" align="center" valign="middle" style="color: #999999; font-size: 14px; font-family:'circular', Arial, sans-serif;" colspan="3">
+                Connect with us on:
+              </td>
+            </tr>
+            <tr><td height="15" colspan="3"></td></tr>
+            <tr>
+              <td width="auto" align="right" valign="middle">
+                <a href="https://www.facebook.com/movedapp" target="_blank"><img style="display:inline;" alt="Facebook" height="32" width="32"
+                  src="{{domain}}images/emails/icon-facebook.png" border="0" /></a>
+              </td>
+              <td width="10%" align="center" valign="middle">
+                <a href="https://twitter.com/movedapp" target="_blank"><img style="display:inline;" alt="Twitter" height="32" width="32"
+                  src="{{domain}}images/emails/icon-twitter.png" border="0" /></a>
+              </td>
+              <td width="auto" align="left" valign="middle">
+                <a href="https://instagram.com/movedapp" target="_blank"><img style="display:inline;" alt="Instagram" height="32" width="32"
+                  src="{{domain}}images/emails/icon-instagram.png" border="0" /></a>
+              </td>
+            </tr>
+            <tr><td height="60" colspan="3"></td></tr>
+            <tr>
+              <td align="center" valign="middle" colspan="3" style="color: #999999; font-size: 12px; font-family:'circular', Arial, sans-serif;">
+                Don't want any more of these emails? Click to <a href="%unsubscribe_url%" target="_blank" style="color: #999999;">unsubscribe</a>.
+              </td>
+            </tr>
+            <tr><td height="20" colspan="3"></td></tr>
+          </table>
+        {% endblock %}
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

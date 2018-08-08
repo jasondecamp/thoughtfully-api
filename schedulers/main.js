@@ -5,13 +5,13 @@ const scheduler = new Nodal.Scheduler();
 
 /* generator: begin imports */
 
-const DummyTask = Nodal.require('tasks/dummy_task.js');
+const EventProcessor = Nodal.require('tasks/eventProcessor.js');
 
 /* generator: end imports */
 
 /* generator: begin tasks */
 
-scheduler.minutely(30).perform(DummyTask);
+scheduler.minutely(1).perform(EventProcessor);
 
 /* generator: end tasks */
 

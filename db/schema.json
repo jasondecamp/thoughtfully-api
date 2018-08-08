@@ -1,5 +1,69 @@
 {
 
-  "migration_id": null
+  "migration_id": 2018080800300929,
+
+  "models": {
+
+    "AccessToken": {
+
+      "table": "access_tokens",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "user_id", "type": "int", "properties": {}},
+        {"name": "access_token", "type": "string", "properties": {}},
+        {"name": "token_type", "type": "string", "properties": {}},
+        {"name": "expires_at", "type": "datetime", "properties": {}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    },
+
+    "OauthUser": {
+
+      "table": "oauth_users",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "user_id", "type": "int", "properties": {}},
+        {"name": "provider_id", "type": "string", "properties": {}},
+        {"name": "provider", "type": "string", "properties": {}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    },
+
+    "Thought": {
+
+      "table": "thoughts",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "user_id", "type": "int", "properties": {}},
+        {"name": "body", "type": "string", "properties": {}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    },
+
+    "User": {
+
+      "table": "users",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "username", "type": "string", "properties": {}},
+        {"name": "password", "type": "string", "properties": {}},
+        {"name": "email", "type": "string", "properties": {"unique":true}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    }
+
+  }
 
 }

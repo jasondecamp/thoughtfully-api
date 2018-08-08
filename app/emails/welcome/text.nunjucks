@@ -1,0 +1,21 @@
+Welcome {{user.firstname}}!
+
+Need help getting started? Follow these simple steps to get your move on!
+
+Step 1: Enter your Move Details
+Let us know your move date, origin, and destination in the Move Details section.
+
+Step 2: Take Inventory
+Let us know what you're moving in the Take Inventory section.
+
+Step 3: Request Moving Quotes
+Select "Get Me Quotes!" in the Request Moving Quotes section and your personal assistant will retrieve them for you.
+
+Sit back & relax! We will coordinate everything from here and keep you updated along the way.
+
+Get Started: {{domain}}dashboard
+
+Your friends @ Moved
+
+Have questions or just want to say hi? Enter the chat section and ask away!
+Your assistant is on standby to help with anything you need.
