@@ -3,7 +3,9 @@
 const Nodal = require('nodal');
 const Thought = Nodal.require('app/models/thought.js');
 
-class ThoughtsController extends Nodal.Controller {
+const AuthController = Nodal.require('app/controllers/auth_controller.js');
+
+class ThoughtsController extends AuthController {
 
   index() {
 

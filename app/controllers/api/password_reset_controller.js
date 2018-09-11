@@ -8,7 +8,7 @@ const Relationships = Nodal.require('app/relationships.js');
 
 const AuthController = Nodal.require('app/controllers/auth_controller.js');
 
-class V1PasswordResetController extends AuthController {
+class PasswordResetController extends AuthController {
 
   index() {
 
@@ -48,11 +48,11 @@ class V1PasswordResetController extends AuthController {
       token_type: 'reset'
     }
 
-    AccessToken.verify(auth, (err,accessToken,user) => {
+    AccessToken.verify(auth, (err,accessToken) => {
       if(err) return this.respond(err);
 
-      user.set('password',this.params.body.password);
-      user.save((err,user) => {
+      accessToken.joined('user').set('password',this.params.body.password);
+      accessToken.joined('user').save((err,user) => {
         if(err) return this.respond(err);
 
         accessToken.destroy();
@@ -66,4 +66,4 @@ class V1PasswordResetController extends AuthController {
 
 }
 
-module.exports = V1PasswordResetController;
+module.exports = PasswordResetController;

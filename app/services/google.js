@@ -11,8 +11,7 @@ const GoogleAuth = require('google-auth-library');
 
 const clientID = process.env.GOOGLE_SERVER_CLIENT_ID;
 const clientList = [
-  process.env.GOOGLE_WEB_CLIENT_ID,
-  process.env.GOOGLE_IOS_CLIENT_ID
+  process.env.GOOGLE_WEB_CLIENT_ID
 ];
 const auth = new GoogleAuth;
 const client = new auth.OAuth2(clientID,'','');

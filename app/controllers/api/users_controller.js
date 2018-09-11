@@ -3,6 +3,8 @@
 const Nodal = require('nodal');
 
 const User = Nodal.require('app/models/user.js');
+const AccessToken = Nodal.require('app/models/access_token.js');
+
 const Relationships = Nodal.require('app/relationships.js');
 
 const AuthController = Nodal.require('app/controllers/auth_controller.js');
@@ -21,16 +23,7 @@ class UsersController extends AuthController {
         .where(this.params.query)
         .end((err, models) => {
 
-          if(err) return this.respond(err);
-
-          let formatted = new Nodal.ItemArray();
-
-          models.forEach((model) => {
-            formatted.push(model.format(user));
-          });
-
-          formatted.setMeta(models._meta);
-          this.respond(formatted);
+          return this.respond(err || models);
 
         });
 
@@ -42,11 +35,10 @@ class UsersController extends AuthController {
 
     this.authorize('user',(user) => {
 
-      if(this.params.route.id == 'me')
-        this.params.route.id = user.get('id');
+      if(this.params.route.id == 'me' || user.get('id') == this.params.route.id)
+        this.respond(user.format());
 
-      if(user.get('id') != this.params.route.id)
-        return this.respond(new Error('User not authorized'));
+      else return this.respond(new Error('User not authorized'));
 
       User.query()
         .where({id:this.params.route.id})
@@ -68,9 +60,14 @@ class UsersController extends AuthController {
 
       if(!this.params.body.password) return this.respond(new Error('password is required'));
 
-      User.create(this.params, (err,result) => {
+      User.create(this.params.body, (err,model) => {
+        if(err) return this.respond(err);
 
-        this.respond(err || result.format(user));
+        AccessToken.generate({user:model,type:'bearer'}, (err, accessToken) => {
+
+          this.respond(err || accessToken.format(true));
+
+        });
 
       });
 
@@ -93,7 +90,7 @@ class UsersController extends AuthController {
 
           User.update(this.params.route.id, this.params.body, (err, model) => {
 
-            this.respond(err || model.format(user));
+            this.respond(err || model);
 
           });
 
@@ -101,7 +98,7 @@ class UsersController extends AuthController {
 
       User.update(this.params.route.id, this.params.body, (err, model) => {
 
-        this.respond(err || model.format(user));
+        this.respond(err || model);
 
       });
 

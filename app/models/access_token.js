@@ -14,7 +14,7 @@ class AccessToken extends Nodal.Model {
       user_id: params.user.get('id'),
       access_token: Token.generate(),
       token_type: params.type,
-      expires_at: (new Date(new Date().valueOf() + (30 * 24 * 60 * 60 * 1000)))
+      expires_at: (new Date(new Date().valueOf() + (365 * 24 * 60 * 60 * 1000)))
     }).save((err,accessToken) => {
 
       if(err) return callback(err);
@@ -29,12 +29,8 @@ class AccessToken extends Nodal.Model {
 
   static login(params, callback) {
 
-    if (params.body.grant_type !== 'password') {
-      return callback(new Error('Must supply grant_type'));
-    }
-
     User.query()
-      .where({email: params.body.email.toLowerCase()})
+      .where({username: params.body.username.toLowerCase()})
       .first((err, user) => {
 
         if (err || !user) {
@@ -80,11 +76,11 @@ class AccessToken extends Nodal.Model {
 
         if (!accessToken.joined('user')) {
 
-          return callback(new Error('Your access token belongs to an invalid user.'));
+          return callback(new Error('Your access token is invalid.'));
 
         }
 
-        return callback(null, accessToken, accessToken.joined('user'));
+        return callback(null, accessToken);
 
       });
 
@@ -127,7 +123,7 @@ class AccessToken extends Nodal.Model {
   format(registration) {
     const modelObj = this.toObject(['access_token','expires_at']);
     if(this.joined('user')) modelObj.user = this.joined('user').format();
-    modelObj.newUser = registration === true;
+    modelObj.registration = registration === true;
     return modelObj;
   }
 

@@ -36,6 +36,10 @@ class User extends Nodal.Model {
 
   }
 
+  format() {
+    return this.toObject(['id','username','email']);
+  }
+
 }
 
 User.setDatabase(Nodal.require('db/main.js'));
