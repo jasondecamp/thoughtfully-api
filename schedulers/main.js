@@ -11,7 +11,7 @@ const EventProcessor = Nodal.require('tasks/eventProcessor.js');
 
 /* generator: begin tasks */
 
-scheduler.minutely(1).perform(EventProcessor);
+scheduler.weekly(1).perform(EventProcessor);
 
 /* generator: end tasks */
 

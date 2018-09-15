@@ -3,7 +3,7 @@
 // dependencies
 const _ = require('lodash');
 const path = require('path');
-const EmailTemplate = require('email-templates').EmailTemplate;
+const Email = require('email-templates');
 const cons = require('consolidate');
 const nunjucks = require('nunjucks');
 const dateFilter = require('nunjucks-date-filter');
@@ -40,7 +40,7 @@ const defaultRenderData = {
 };
 
 const defaultSendData = {
-  from: 'Thoughtful <me@thoughtfully.app>'
+  from: 'Thoughtfully <me@thoughtfully.app>'
 }
 
 const formatEmail = (user) => {
@@ -61,7 +61,6 @@ const Mailgun = {
       }
       user: user.toObject() result
       data: { custom data for the email template }
-      delay: { minutes: X }
     }
     */
     // format the data
@@ -69,20 +68,18 @@ const Mailgun = {
     if(data.user) data.data.user = data.user;
 
     // get the template
-    const template = new EmailTemplate(__dirname + '/../emails/' + data.email);
+    const template = new Email({
+      views: { options: { extension: 'njk' } }
+    });
     // render the template with the data
     const renderData = _.extend({}, defaultRenderData, data.data);
-    template.render(renderData, (err,result) => {
-      if(err) return callback(err);
-
+    template.renderAll(data.email, renderData).then((result) => {
       // construct the data to send the email
       const defaultTo = data.user ? { to: formatEmail(data.user) } : {};
       const sendData = _.extend({},result,defaultSendData,defaultTo,data.options);
-
       // send the email
       mailgun.messages().send(sendData, callback);
-
-    });
+    }).catch(console.error);
   }
 };
 

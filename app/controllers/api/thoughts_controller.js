@@ -35,6 +35,9 @@ class ThoughtsController extends AuthController {
 
       Thought.create(this.params.body, (err, model) => {
 
+        user.set('last_active',model.get('created_at'));
+        user.save();
+
         this.respond(err || model);
 
       });

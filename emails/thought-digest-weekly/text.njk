@@ -1,0 +1,30 @@
+Thoughtfully.
+
+
+Trigger warning:
+Make sure you are in a good mental space before continuing. Below are your 5 most frequently submitted thoughts in the past week.
+
+
+Most common thought
+
+{{thoughts[0].body}}
+You submitted this thought {{thoughts[0].count}} times this week.
+
+
+{% if (thoughts.length > 1) %}Other common thoughts
+{% for thought in thoughts %}{% if(not loop.first) %}
+{{thought.body}}
+You submitted this thought {{thought.count}} times this week.
+
+{% endif %}{% endfor %}{% endif %}
+
+More thoughts?
+Head back to Thoughtfully.
+https://thoughtfully.app
+
+
+Thoughtfully.app is a free service to help organize and catalog your thoughts.
+
+You are receiving this email because you've registered at Thoughtfully.app and submitted your thoughts in the past week.
+
+Unsubscribe - %unsubscribe_url%
