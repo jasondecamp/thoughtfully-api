@@ -6,7 +6,7 @@ class CORSMiddleware {
 
   exec(controller, callback) {
 
-    controller.allowOrigin('*');
+    controller.allowOrigin(process.env.ENV_DOMAIN);
     controller.appendHeader('Access-Control-Allow-Headers', 'Authorization');
     callback(null);
 

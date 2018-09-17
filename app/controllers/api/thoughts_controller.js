@@ -17,9 +17,9 @@ class ThoughtsController extends AuthController {
       Thought.query()
         .where(this.params.query)
         .orderBy('body','ASC')
-        .end((err, models) => {
+        .first((err, model) => {
 
-          this.respond(err || models);
+          this.respond(model);
 
         });
 
