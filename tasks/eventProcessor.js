@@ -7,24 +7,6 @@ Nodal.require('app/relationships.js');
 
 const Mailgun = Nodal.require('app/services/mailgun.js');
 
-const limit = moment().subtract(7, 'days');
-User.query()
-  .join('thoughts',[{'created_at__gt':limit.format()}])
-  .where({'thoughts__created_at__gt':limit.format()})
-  .end((err,users) => {
-    if(err) return console.log(err);
-    users.forEach((user) => {
-      let counter = new Multiset();
-      user.joined('thoughts').forEach(thought => {
-        counter.add(thought.get('body').trim());
-      });
-      const sorted = [...counter.entries()]
-        .map(item => ({body:item[0],count:item[1]}))
-        .sort((a, b) => b.count - a.count);
-      sorted.length = 5;
-    });
-  });
-
 class EventProcessor {
 
   exec(args) {
