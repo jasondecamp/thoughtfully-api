@@ -56,4 +56,7 @@ class Multiset extends Map {
   }
 }
 
+if(process.argv[2] && process.argv[2] == 'manual')
+  (new EventProcessor()).exec();
+
 module.exports = EventProcessor;
