@@ -27,7 +27,7 @@ class EventProcessor {
           const sorted = [...counter.entries()]
             .map(item => ({body:item[0],count:item[1]}))
             .sort((a, b) => b.count - a.count);
-          sorted.length = 5;
+          if(sorted.length > 5) sorted.length = 5;
           const emailData = {
             email: 'thought-digest-weekly',
             user: user.toObject(),
