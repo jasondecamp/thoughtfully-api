@@ -7,6 +7,10 @@ class User extends Nodal.Model {
 
   beforeSave(callback) {
 
+    if (!this.hasErrors() && this.hasChanged('email')) {
+      this._safeset('email', this.get('email').toLowerCase());
+    }
+
     if (!this.hasErrors() && this.hasChanged('password')) {
 
       bcrypt.hash(this.get('password'), 10, (err, hash) => {

@@ -56,6 +56,8 @@ class Multiset extends Map {
   }
 }
 
+// can trigger event processor manually
+// $ node tasks/eventProcessor.js manual
 if(process.argv[2] && process.argv[2] == 'manual')
   (new EventProcessor()).exec();
 

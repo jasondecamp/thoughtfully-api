@@ -4,7 +4,7 @@ const Nodal = require('nodal');
 const User = Nodal.require('app/models/user.js');
 
 const Token = Nodal.require('app/services/token.js');
-const Events = Nodal.require('app/services/events.js');
+const Mailgun = Nodal.require('app/services/mailgun.js');
 
 class AccessToken extends Nodal.Model {
 
@@ -114,7 +114,7 @@ class AccessToken extends Nodal.Model {
         data: { token: accessToken.get('access_token') }
       };
       // schedule the email
-      Events.email(data,{},callback);
+      Mailgun.send(data,callback);
 
     });
 
