@@ -5,6 +5,7 @@ const User = Nodal.require('app/models/user.js');
 const Thought = Nodal.require('app/models/thought.js');
 Nodal.require('app/relationships.js');
 
+const Cypher = Nodal.require('app/services/cypher.js');
 const Mailgun = Nodal.require('app/services/mailgun.js');
 
 class EventProcessor {
@@ -22,10 +23,10 @@ class EventProcessor {
         users.forEach((user) => {
           let counter = new Multiset();
           user.joined('thoughts').forEach(thought => {
-            counter.add(thought.get('body').trim());
+            counter.add(thought.get('body'));
           });
           const sorted = [...counter.entries()]
-            .map(item => ({body:item[0],count:item[1]}))
+            .map(item => ({body:Cypher.decrypt(item[0],user.get('cypher')),count:item[1]}))
             .sort((a, b) => b.count - a.count);
           if(sorted.length > 5) sorted.length = 5;
           const emailData = {

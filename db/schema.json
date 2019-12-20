@@ -1,6 +1,6 @@
 {
 
-  "migration_id": 2018080800300929,
+  "migration_id": 2019121922274100,
 
   "models": {
 
@@ -60,7 +60,8 @@
         {"name": "email", "type": "string", "properties": {"unique":true}},
         {"name": "last_active", "type": "datetime", "properties": {}},
         {"name": "created_at", "type": "datetime", "properties": {}},
-        {"name": "updated_at", "type": "datetime", "properties": {}}
+        {"name": "updated_at", "type": "datetime", "properties": {}},
+        {"name": "cypher", "type": "string", "properties": {}}
       ]
 
     }

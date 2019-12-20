@@ -2,13 +2,18 @@
 
 const Nodal = require('nodal');
 const bcrypt = require('bcryptjs');
+const Cypher = Nodal.require('app/services/cypher.js');
 
 class User extends Nodal.Model {
 
   beforeSave(callback) {
 
+    if (!this.hasErrors() && !this.get('cypher')) {
+      this.__safeSet__('cypher', Cypher.generate());
+    }
+
     if (!this.hasErrors() && this.hasChanged('email')) {
-      this._safeset('email', this.get('email').toLowerCase());
+      this.__safeSet__('email', this.get('email').toLowerCase());
     }
 
     if (!this.hasErrors() && this.hasChanged('password')) {
