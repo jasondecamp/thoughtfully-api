@@ -1,11 +1,11 @@
 {
   "name": "thoughtfully-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "thoughtfully-api",
   "author": "jason decamp",
   "main": "cluster.js",
   "engines": {
-    "node": "8.1.4"
+    "node": "15.4"
   },
   "dependencies": {
     "async": "^2.6.1",
