@@ -5,7 +5,7 @@
   "author": "jason decamp",
   "main": "cluster.js",
   "engines": {
-    "node": "15.4"
+    "node": "15.8"
   },
   "dependencies": {
     "async": "^2.6.1",
@@ -14,14 +14,14 @@
     "datejs": "^1.0.0-rc3",
     "email-templates": "^5.0.0",
     "fb": "^1.1.1",
-    "google-auth-library": "^0.10.0",
-    "googleapis": "^59.0.0",
+    "google-auth-library": "^7.0.3",
+    "googleapis": "^70.0.0",
     "heroku-node-settings": "^1.1.0",
     "lodash": "^4.17.11",
     "mailgun-js": "^0.20.0",
     "moment": "^2.22.2",
-    "nodal": "^0.14.6",
-    "nunjucks": "^3.1.3",
+    "nodal": "^0.15.5",
+    "nunjucks": "^3.2.3",
     "nunjucks-date-filter": "^0.1.1",
     "redis": "^2.8.0"
   },
