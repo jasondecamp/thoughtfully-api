@@ -15,7 +15,7 @@
     "email-templates": "^5.0.0",
     "fb": "^1.1.1",
     "google-auth-library": "^0.10.0",
-    "googleapis": "^19.0.0",
+    "googleapis": "^59.0.0",
     "heroku-node-settings": "^1.1.0",
     "lodash": "^4.17.11",
     "mailgun-js": "^0.20.0",
